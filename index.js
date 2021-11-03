@@ -2,12 +2,23 @@ const inquirer = require('inquirer');
 const fs = require("fs");
 
 
+
+const readMeTemplate = ({ ProjectTitle, Description, TableOfContent, Installation, 
+                        Usage, Lisence, Contributing, Tests, Username, Email}) => {
+                          
+                          ``
+
+                        }
+
+
+
+
 inquirer
   .prompt([
     {
       type: 'input',
       message: 'What is your project title?',
-      name: 'Project title',
+      name: 'ProjectTitle',
     },
     {
       type: 'input',
@@ -17,7 +28,7 @@ inquirer
     {
       type: 'input',
       message: 'Enter a table of content.',
-      name: 'Table of Tontent',
+      name: 'TableOfContent',
     },
     {
       type: 'input',
@@ -31,13 +42,13 @@ inquirer
     },
     {
         type: 'list',
-        message: '',
+        message: 'Choose a lisence',
         name: 'Lisence',
-        choices: []
+        choices: [a, b, c, d]
     },
     {
         type: 'input',
-        message: '',
+        message: 'Add anyone who contributed to this project',
         name: 'Contributing',
     },
     {
@@ -56,3 +67,15 @@ inquirer
         name: 'Email',
     },
   ])
+
+
+
+
+.then((answers) => {
+    console.log(answers);
+    const readMePage = readMeTemplate(answers);
+    fs.writeFile('README.md', readMePage, (err) =>
+      err ? console.log(err) : console.log('Successfully created README!')
+    );
+  });
+  
