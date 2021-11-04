@@ -3,59 +3,58 @@ const fs = require("fs");
 
 
 
-const readMeTemplate = ({ ProjectTitle, Description, TableOfContent, Installation, 
-                        Usage, License, Contributing, Tests, Username, Email}) => {
-                          
-                          `# ${ProjectTitle} 
+const readMeTemplate = ({ ProjectTitle, Description, TableOfContent, Installation, Usage, License, Contributing, Tests, Username, Email }) => 
+`# ${ProjectTitle} 
 
 
 
-                          ## Description
+## Description
                           
-                          ${Description}
-                          
-                          
-                          ## Table of Contents
-                          
-                          ${TableOfContent}
+${Description}
                           
                           
-                          ## Installation
+## Table of Contents
                           
-                          ${Installation}
-                          
-                          
-                          ## Usage
-                          
-                          ${Usage}
+${TableOfContent}
                           
                           
-                          ## License
+## Installation
                           
-                          ${License}
-                          
-                          
-                          ## Contributing
-                          
-                          ${Contributing}
+${Installation}
                           
                           
-                          ## Tests
+## Usage
                           
-                          ${Tests}
-                          
-                          
-                          ## Username
-                          
-                          ${Username}
+${Usage}
                           
                           
-                          ## Email
+## License
                           
-                          ${Email}
-                          `
+${License}
+                          
+                          
+## Contributing
+                          
+${Contributing}
+                          
+                          
+## Tests
+                          
+${Tests}
+                          
+                          
+## Username
+                          
+${Username}
+                          
+                          
+## Email
+                          
+${Email}
+`
+                          
 
-                        }
+                        
 
 
 
@@ -119,10 +118,9 @@ inquirer
 
   .then((answers) => {
     const readMePageContent = readMeTemplate(answers);
-
-    fs.writeFileSync('README.md', readMePageContent, (err) =>
+    
+    fs.writeFileSync('NEWREADME.md', readMePageContent, (err) =>
       err ? console.log(err) : console.log('Successfully created a professional README!')
     );
-  });
+   });
 
-  
