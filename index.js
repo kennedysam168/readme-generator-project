@@ -4,9 +4,56 @@ const fs = require("fs");
 
 
 const readMeTemplate = ({ ProjectTitle, Description, TableOfContent, Installation, 
-                        Usage, Lisence, Contributing, Tests, Username, Email}) => {
+                        Usage, License, Contributing, Tests, Username, Email}) => {
                           
-                          ``
+                          `# ${ProjectTitle} 
+
+
+
+                          ## Description
+                          
+                          ${Description}
+                          
+                          
+                          ## Table of Contents
+                          
+                          ${TableOfContent}
+                          
+                          
+                          ## Installation
+                          
+                          ${Installation}
+                          
+                          
+                          ## Usage
+                          
+                          ${Usage}
+                          
+                          
+                          ## License
+                          
+                          ${License}
+                          
+                          
+                          ## Contributing
+                          
+                          ${Contributing}
+                          
+                          
+                          ## Tests
+                          
+                          ${Tests}
+                          
+                          
+                          ## Username
+                          
+                          ${Username}
+                          
+                          
+                          ## Email
+                          
+                          ${Email}
+                          `
 
                         }
 
@@ -43,8 +90,8 @@ inquirer
     {
         type: 'list',
         message: 'Choose a lisence',
-        name: 'Lisence',
-        choices: [a, b, c, d]
+        name: 'License',
+        choices: ["a", "b", "c", "d"]
     },
     {
         type: 'input',
@@ -70,12 +117,12 @@ inquirer
 
 
 
+  .then((answers) => {
+    const readMePageContent = readMeTemplate(answers);
 
-.then((answers) => {
-    console.log(answers);
-    const readMePage = readMeTemplate(answers);
-    fs.writeFile('README.md', readMePage, (err) =>
-      err ? console.log(err) : console.log('Successfully created README!')
+    fs.writeFileSync('README.md', readMePageContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created a professional README!')
     );
   });
+
   
